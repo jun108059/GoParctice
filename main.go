@@ -45,4 +45,23 @@ func main() {
 	// 3-5. defer
 	response := _01_theory.WhatIsDefer("Defer 테스트")
 	fmt.Println(response)
+
+	/*
+		4. for loop
+	*/
+	// 4-1. for & range
+	total := _01_theory.SuperAdd(1, 2, 3, 4, 5, 6)
+	fmt.Println(total)
+
+	/*
+		5. if else
+	*/
+	fmt.Println(_01_theory.CanIDrink(18))
+	fmt.Println(_01_theory.CanIDrinkInKorea(18))
+
+	/*
+		6. Switch
+	*/
+	fmt.Println(_01_theory.CheckGrade(85))
+	fmt.Println(_01_theory.CheckRank(100))
 }
