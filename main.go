@@ -64,4 +64,16 @@ func main() {
 	*/
 	fmt.Println(_01_theory.CheckGrade(85))
 	fmt.Println(_01_theory.CheckRank(100))
+
+	/*
+		7. Pointer
+	*/
+	fmt.Println(_01_theory.Pointer(5300))
+
+	/*
+		8. Array And Slice
+	*/
+	fmt.Println(_01_theory.AboutArray())
+	fmt.Println(_01_theory.AboutSlice())
+
 }
