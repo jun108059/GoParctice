@@ -29,4 +29,20 @@ func main() {
 	fullName = "youngjun park" // 값 변경 가능
 	fmt.Println(fullName)
 
+	/*
+		3. Functions part
+	*/
+	// 3-1. argument & return 명시
+	fmt.Println(_01_theory.Multiply(2, 2))
+	// 3-2. multiple return
+	fmt.Println(_01_theory.LenAndUpper("hello"))
+	totalLength, upperName := _01_theory.LenAndUpper(fullName)
+	fmt.Println(totalLength, upperName)
+	// 3-3. 같은 타입 Argument 여러개 받기
+	_01_theory.RepeatMe("youngjun", "park", "golang", "practice")
+	// 3-4. Naked Return
+	fmt.Println(_01_theory.LenAndUpperByNaked("hello"))
+	// 3-5. defer
+	response := _01_theory.WhatIsDefer("Defer 테스트")
+	fmt.Println(response)
 }
