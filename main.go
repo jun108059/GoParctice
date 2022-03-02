@@ -76,4 +76,14 @@ func main() {
 	fmt.Println(_01_theory.AboutArray())
 	fmt.Println(_01_theory.AboutSlice())
 
+	/*
+		9. Map
+	*/
+	fmt.Println(_01_theory.AboutMap("yj park", "28"))
+	fmt.Println(_01_theory.AboutMapForRange("yj park", "28"))
+
+	/*
+		10. Struct
+	*/
+	fmt.Println(_01_theory.AboutStruct())
 }
