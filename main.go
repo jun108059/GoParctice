@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/jun108059/learngo/_01_theory"
+	"github.com/jun108059/learngo/_02_accounts"
 )
 
 func main() {
@@ -86,4 +87,9 @@ func main() {
 		10. Struct
 	*/
 	fmt.Println(_01_theory.AboutStruct())
+
+	/*
+		11. accounts
+	*/
+	account := _02_accounts.NewAccount("yj park")
 }
