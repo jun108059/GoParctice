@@ -89,7 +89,16 @@ func main() {
 	fmt.Println(_01_theory.AboutStruct())
 
 	/*
-		11. accounts
+		11. accounts (생성자)
 	*/
 	account := _02_accounts.NewAccount("yj park")
+	fmt.Println(account)
+
+	fmt.Println("===============================")
+
+	/*
+		12. method (함수)
+	*/
+	account.Deposit(100)
+	fmt.Println(account.GetBalance())
 }
