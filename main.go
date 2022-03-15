@@ -101,4 +101,10 @@ func main() {
 	*/
 	account.Deposit(100)
 	fmt.Println(account.GetBalance())
+	// 예외 처리
+	err := account.Withdraw(200)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(account.GetBalance())
 }
