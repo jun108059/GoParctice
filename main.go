@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/jun108059/learngo/_01_theory"
-	"github.com/jun108059/learngo/_02_accounts"
+	"github.com/jun108059/GoPractice/_01_theory"
+	"github.com/jun108059/GoPractice/_02_accounts"
+	"github.com/jun108059/GoPractice/_03_dict"
 )
 
 func main() {
@@ -107,4 +108,48 @@ func main() {
 		fmt.Println(err)
 	}
 	fmt.Println(account.GetBalance())
+	// 계좌 주인 이름 변경
+	account.ChangeOwner("youngjun Park")
+	// String 매직 메소드 호출
+	fmt.Println(account)
+
+	fmt.Println("===============================")
+
+	/*
+		13. dictionary
+	*/
+	dictionary := _03_dict.Dictionary{}
+	key := "FirstName"
+	value := "YoungJun"
+	errDict := dictionary.Add(key, value)
+	if errDict != nil {
+		fmt.Println(errDict)
+	} else {
+		fmt.Println("Add Complete")
+	}
+	searchValue, errDict2 := dictionary.Search(key)
+	if errDict2 != nil {
+		fmt.Println(errDict2)
+	} else {
+		fmt.Println("Search Value : ", searchValue)
+	}
+	errDict3 := dictionary.Add(key, value)
+	if errDict3 != nil {
+		fmt.Println(errDict3)
+	} else {
+		fmt.Println("Add Complete")
+	}
+
+	// Update dictionary
+	errUpdate := dictionary.Update(key, "yj")
+	if errUpdate != nil {
+		fmt.Println(errUpdate)
+	}
+	word, _ := dictionary.Search(key)
+	fmt.Println(word)
+
+	//  Delete dictionary
+	dictionary.Delete(key)
+	_, searchErr := dictionary.Search(key)
+	fmt.Println(searchErr)
 }

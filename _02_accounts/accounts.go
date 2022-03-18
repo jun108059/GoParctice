@@ -1,6 +1,9 @@
 package _02_accounts
 
-import "errors"
+import (
+	"errors"
+	"fmt"
+)
 
 // Account struct
 type Account struct {
@@ -33,4 +36,19 @@ func (a *Account) Withdraw(amount int) error {
 	}
 	a.balance -= amount
 	return nil
+}
+
+// ChangeOwner 계좌 주인 이름 변경
+func (a *Account) ChangeOwner(newOwner string) {
+	a.owner = newOwner
+}
+
+// GetOwner 계좌 주인 이름 가져오기
+func (a Account) GetOwner() string {
+	return a.owner
+}
+
+// String python __str__ 매직메소드처럼 호출 됨
+func (a Account) String() string {
+	return fmt.Sprint(a.GetOwner(), "'s account.\n Has: ", a.GetBalance())
 }
