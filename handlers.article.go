@@ -11,18 +11,9 @@ func showIndexPage(c *gin.Context) {
 	// 기존에 정의한 getAllArticles 함수를 이용하여 article list 가져오기
 	articles := getAllArticles()
 
-	// html 템플릿에 Render 하기 위해 Gin Context -> HTML() 메소드 호출
-	c.HTML(
-		// HTTP status 200 (OK) 설정
-		http.StatusOK,
-		// index.html 템플릿 사용 설정
-		"index.html",
-		// 페이지에서 사용될 데이터 passing(전달)
-		gin.H{
-			"title":   "Home Page",
-			"payload": articles,
-		},
-	)
+	render(c, gin.H{
+		"title":   "Home Page",
+		"payload": articles}, "index.html")
 }
 
 func getArticle(c *gin.Context) {
@@ -47,4 +38,24 @@ func getArticle(c *gin.Context) {
 		// article ID 유효하지 않음
 		c.AbortWithStatus(http.StatusNotFound)
 	}
+}
+
+// render
+// c : gin Context
+// data : 데이터 passing
+// templateName : 랜더링할 템플릿 이름
+func render(c *gin.Context, data gin.H, templateName string) {
+
+	switch c.Request.Header.Get("Accept") {
+	case "application/json":
+		// Respond with JSON
+		c.JSON(http.StatusOK, data["payload"])
+	case "application/xml":
+		// Respond with XML
+		c.XML(http.StatusOK, data["payload"])
+	default:
+		// Respond with HTML
+		c.HTML(http.StatusOK, templateName, data)
+	}
+
 }
