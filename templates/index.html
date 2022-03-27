@@ -1,18 +1,18 @@
 <!--index.html-->
 
-<!--Embed the header.html template at this location-->
+<!--header 템플릿 Embed-->
 {{ template "header.html" .}}
 
-<!--Loop over the payload variable, which is the list of articles-->
-{{range .payload }}
-<!--Create the link for the article based on its ID-->
+<!--payload 변수(articleList) 길이만큼 Loop-->
+{{range .payload}}
+<!--Article 제목을 누르면 Detail Page Randing-->
 <a href="/article/view/{{.ID}}">
-    <!--Display the title of the article -->
+    <!--article 제목-->
     <h2>{{.Title}}</h2>
 </a>
-<!--Display the content of the article-->
+<!--article 내용-->
 <p>{{.Content}}</p>
 {{end}}
 
-<!--Embed the footer.html template at this location-->
+<!--footer 템플릿 Embed-->
 {{ template "footer.html" .}}
