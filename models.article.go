@@ -1,5 +1,8 @@
 package main
 
+import "errors"
+
+// article struct
 type article struct {
 	ID      int    `json:"id"`
 	Title   string `json:"title"`
@@ -15,4 +18,14 @@ var articleList = []article{
 // 전체 article list 조회
 func getAllArticles() []article {
 	return articleList
+}
+
+// getArticleByID ID로 Article 조회
+func getArticleByID(id int) (*article, error) {
+	for _, a := range articleList {
+		if a.ID == id {
+			return &a, nil
+		}
+	}
+	return nil, errors.New("article not found")
 }
