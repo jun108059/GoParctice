@@ -32,3 +32,30 @@ func TestShowIndexPageUnauthenticated(t *testing.T) {
 		return statusOK && pageOK
 	})
 }
+
+// TestCode
+// Get : article 상세 뷰 (UnAuthenticated 유저)
+// 1) ID 유효성 검사
+// 2) Article 존재 여부 검사
+func TestArticleUnauthenticated(t *testing.T) {
+	r := getRouter(true)
+
+	// Define the route similar to its definition in the routes file
+	r.GET("/article/view/:article_id", getArticle)
+
+	// Create a request to send to the above route
+	req, _ := http.NewRequest("GET", "/article/view/1", nil)
+
+	testHTTPResponse(t, r, req, func(w *httptest.ResponseRecorder) bool {
+		// Test that the http status code is 200
+		statusOK := w.Code == http.StatusOK
+
+		// Test that the page title is "Article 1"
+		// You can carry out a lot more detailed tests using libraries that can
+		// parse and process HTML pages
+		p, err := ioutil.ReadAll(w.Body)
+		pageOK := err == nil && strings.Index(string(p), "<title>Article 1</title>") > 0
+
+		return statusOK && pageOK
+	})
+}
