@@ -19,6 +19,16 @@ func main() {
 		})
 	})
 
+	// Http Receive Parameter
+	router.GET("/:name", func(c *gin.Context) {
+		// :name - gin url 이후에 오는 name 변수로 받음
+
+		var name = c.Param("name")
+		c.JSON(http.StatusOK, gin.H{
+			"value": name,
+		})
+	})
+
 	// 모든 템플릿을 미리 로드 > 다시 로드할 일 없음 > HTML 서빙이 엄청 빠르다!
 	router.LoadHTMLGlob("templates/*")
 
